@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -22,8 +22,7 @@ public class Order {
   private Long id;
   private String number;
   private String buyerEmail;
-  @Temporal(TemporalType.DATE)
-  private Date date;
+  private LocalDateTime date;
   @ManyToMany(mappedBy = "orders")
-  private List<Product> product;
+  private List<Product> products;
 }
