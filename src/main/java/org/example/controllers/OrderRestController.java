@@ -4,12 +4,12 @@ import org.example.dto.OrderDto;
 import org.example.dto.RestCallArgs;
 import org.example.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -19,15 +19,17 @@ public class OrderRestController {
   @Autowired
   private OrderService orderService;
 
-  //todo проверить работооспособность Date
-  //todo посмотреть как принимать с возможностью null PathVariable
+  //todo часовой пояс
 
-  @GetMapping("/orders/{users_email}/{article}/{start_date}/{end_date}")
-  public ResponseEntity<List<OrderDto>> getOrders(@PathVariable("users_email") String usersEmail,
-                                                  @PathVariable("article") String article,
-                                                  @PathVariable("start_date") Date start_date,
-                                                  @PathVariable("end_date") Date end_date) {
+  @GetMapping("/orders")
+  public ResponseEntity<List<OrderDto>> getOrders(@RequestParam(name = "users_email", required = false) String usersEmail,
+                                                  @RequestParam(name = "article", required = false) String article,
+                                                  @RequestParam(name = "start_date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+                                                        Date start_date,
+                                                  @RequestParam(name = "end_date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) Date end_date) {
     RestCallArgs callArgs = new RestCallArgs(usersEmail, article, start_date, end_date);
+    System.out.println(start_date.before(end_date));
+    System.out.println(start_date);
     List<OrderDto> orders = orderService.getOrdersWithArgs(callArgs);
     return orders != null
         ? new ResponseEntity<>(orders, HttpStatus.OK)
