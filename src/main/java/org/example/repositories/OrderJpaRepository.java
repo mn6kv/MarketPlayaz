@@ -13,7 +13,6 @@ public interface OrderJpaRepository extends JpaRepository<Order, Long> {
   List<Order> findOrdersByDateBetween(LocalDateTime start, LocalDateTime end);
   List<Order> findOrdersByBuyerEmail(String email);
   List<Order> findOrdersByProductsContains(Product product);
-
   List<Order> findOrdersByDateBetweenAndBuyerEmailAndProductsContains(LocalDateTime start,
                                                                       LocalDateTime end,
                                                                       String buyerEmail,

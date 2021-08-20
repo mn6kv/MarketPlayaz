@@ -3,6 +3,7 @@ package org.example.services;
 import javassist.NotFoundException;
 import org.example.dto.OrderDto;
 import org.example.dto.RestCallArgs;
+import org.example.models.Order;
 import org.example.models.Product;
 import org.example.repositories.OrderJpaRepository;
 import org.example.repositories.ProductJpaRepository;
@@ -56,5 +57,11 @@ public class OrderServiceImpl implements OrderService {
     } else if (startDate != null && endDate != null) {
       return OrderDto.from(orderRepository.findOrdersByDateBetween(startDate, endDate));
     } else return OrderDto.from(orderRepository.findAll());
+  }
+
+  @Override
+  public OrderDto putOrderWithArgs(Order order) {
+    orderRepository.save(order);
+    return OrderDto.from(order);
   }
 }

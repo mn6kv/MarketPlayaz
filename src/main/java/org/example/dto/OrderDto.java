@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class OrderDto {
   private Long id;
-  private String number;
+  private Integer number;
   private String buyerEmail;
   private LocalDateTime date;
   private List<Product> products;

@@ -20,7 +20,7 @@ public class Order {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  private String number;
+  private Integer number;
   private String buyerEmail;
   private LocalDateTime date;
   @ManyToMany(mappedBy = "orders")
