@@ -42,7 +42,7 @@ public class OrderRestController {
 
   @PostMapping("/orders")
   public ResponseEntity<OrderDto> addOrder(@RequestParam(name = "buyers_email", required = false) String buyersEmail,
-                                           @RequestParam(name = "products", required = false) List<Product> products,
+                                           @RequestParam(name = "products") List<Product> products,
                                            @RequestParam(name = "date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
                                                  LocalDateTime date) {
     Order order = Order.builder()

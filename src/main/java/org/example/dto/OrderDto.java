@@ -20,7 +20,7 @@ public class OrderDto {
   private Integer number;
   private String buyerEmail;
   private LocalDateTime date;
-  private List<Product> products;
+  private List<ProductDto> products;
 
   public static OrderDto from(Order order) {
     return OrderDto.builder()
@@ -28,7 +28,7 @@ public class OrderDto {
         .number(order.getNumber())
         .buyerEmail(order.getBuyerEmail())
         .date(order.getDate())
-        .products(order.getProducts())
+        .products(ProductDto.from(order.getProducts()))
         .build();
   }
 
