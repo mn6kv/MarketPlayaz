@@ -20,6 +20,6 @@ public class ProductServiceImpl implements ProductService {
   }
 
   private Product getProductById(Long id) {
-    return productJpaRepository.findById(id).orElse(new Product());
+    return productJpaRepository.findById(id).orElse(null);
   }
 }

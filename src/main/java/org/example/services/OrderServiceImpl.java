@@ -38,10 +38,10 @@ public class OrderServiceImpl implements OrderService {
   }
 
   @Override
-  public ResponseEntity<List<OrderDto>> getOrderByArticle(Long article) throws NotFoundException {
+  public ResponseEntity<List<OrderDto>> getOrderByArticle(Long article) {
     List<Order> orders = orderRepository.findOrdersByProductsContains(
         productRepository.findProductByArticle(article)
-            .orElseThrow(() -> new NotFoundException("Product by article not found")));
+            .orElseThrow(() -> new RuntimeException("Product by article not found")));
     return !orders.isEmpty()
         ? new ResponseEntity<>(OrderDto.from(orders), HttpStatus.OK)
         : new ResponseEntity<>(HttpStatus.NOT_FOUND);
