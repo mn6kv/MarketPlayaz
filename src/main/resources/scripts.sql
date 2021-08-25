@@ -16,7 +16,7 @@ create table product
     id      bigserial not null
         constraint product_pkey
             primary key,
-    article varchar(255),
+    article bigint,
     name    varchar(255),
     price   double precision,
     state   varchar(255)
