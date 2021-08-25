@@ -49,6 +49,6 @@ public class OrderRestController {
                                            @RequestParam(name = "date", required = false)
                                            @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
                                                LocalDateTime date) {
-    return orderService.putOrderWithArgs(buyersEmail, date, productsIds);
+    return orderService.saveOrderWithArgs(buyersEmail, date, productsIds);
   }
 }

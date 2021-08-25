@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -17,14 +18,7 @@ public class ProductServiceImpl implements ProductService {
 
   @Override
   public List<Product> getProductsByIds(List<Long> ids) {
-    List<Product> products = new ArrayList<>();
-    for (Long id : ids) {
-      Product product = getProductById(id);
-      if (product != null) {
-        products.add(product);
-      }
-    }
-    return products;
+    return ids.stream().map(this::getProductById).filter(Objects::nonNull).collect(Collectors.toList());
   }
 
   private Product getProductById(Long id) {
