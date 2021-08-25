@@ -30,12 +30,8 @@ public class OrderRestController {
 
   @GetMapping("/orders/article")
   public ResponseEntity<List<OrderDto>> getOrders(@RequestParam("article") Long article) {
-    try {
       return orderService.getOrderByArticle(article);
-    }
-    catch (NotFoundException e) {
-      throw new IllegalArgumentException(e);
-    }
+
   }
 
   @GetMapping("/orders/interval")
