@@ -31,7 +31,6 @@ public class OrderRestController {
   @GetMapping("/orders/article")
   public ResponseEntity<List<OrderDto>> getOrders(@RequestParam("article") Long article) {
       return orderService.getOrderByArticle(article);
-
   }
 
   @GetMapping("/orders/interval")
