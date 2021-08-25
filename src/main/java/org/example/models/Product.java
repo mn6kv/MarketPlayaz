@@ -20,7 +20,7 @@ public class Product {
   private Long id;
   private String name;
   private Double price;
-  private String article;
+  private Long article;
   @Enumerated(value = EnumType.STRING)
   private State state;
   @ManyToMany

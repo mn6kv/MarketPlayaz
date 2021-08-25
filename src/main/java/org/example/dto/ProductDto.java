@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.models.Order;
 import org.example.models.Product;
 
 import java.util.List;
@@ -18,7 +17,7 @@ public class ProductDto {
   private Long id;
   private String name;
   private Double price;
-  private String article;
+  private Long article;
 
   public static ProductDto from(Product product) {
     return ProductDto.builder()
@@ -29,7 +28,20 @@ public class ProductDto {
         .build();
   }
 
-  public static List<ProductDto> from(List<Product> orders) {
-    return orders.stream().map(ProductDto::from).collect(Collectors.toList());
+  public static List<ProductDto> from(List<Product> products) {
+    return products.stream().map(ProductDto::from).collect(Collectors.toList());
+  }
+
+  public static Product to(ProductDto product) {
+    return Product.builder()
+        .id(product.getId())
+        .name(product.getName())
+        .price(product.getPrice())
+        .article(product.getArticle())
+        .build();
+  }
+
+  public static List<Product> to(List<ProductDto> products) {
+    return products.stream().map(ProductDto::to).collect(Collectors.toList());
   }
 }

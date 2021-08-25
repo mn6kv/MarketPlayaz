@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.example.models.Order;
-import org.example.models.Product;
 
 import java.time.LocalDateTime;
 import java.util.List;

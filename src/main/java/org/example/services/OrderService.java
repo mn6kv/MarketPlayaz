@@ -2,12 +2,15 @@ package org.example.services;
 
 import javassist.NotFoundException;
 import org.example.dto.OrderDto;
-import org.example.dto.RestCallArgs;
-import org.example.models.Order;
+import org.springframework.http.ResponseEntity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface OrderService {
-  List<OrderDto> getOrdersWithArgs(RestCallArgs callArgs) throws NotFoundException;
-  OrderDto putOrderWithArgs(Order callArgs);
+  ResponseEntity<List<OrderDto>> getOrderByEmail(String buyersEmail);
+  ResponseEntity<List<OrderDto>> getOrderByArticle(Long article) throws NotFoundException;
+  ResponseEntity<List<OrderDto>> getOrderByInterval(LocalDateTime startDate, LocalDateTime endDate);
+  ResponseEntity<OrderDto> putOrderWithArgs(String buyersEmail, LocalDateTime date, List<Long> products);
+  ResponseEntity<List<OrderDto>> getAllOrders();
 }
