@@ -2,7 +2,6 @@ package org.example.controllers;
 
 import javassist.NotFoundException;
 import org.example.dto.OrderDto;
-import org.example.dto.ProductDto;
 import org.example.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;

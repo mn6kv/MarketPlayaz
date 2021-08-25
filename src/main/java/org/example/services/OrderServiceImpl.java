@@ -2,7 +2,6 @@ package org.example.services;
 
 import javassist.NotFoundException;
 import org.example.dto.OrderDto;
-import org.example.dto.ProductDto;
 import org.example.models.Order;
 import org.example.repositories.OrderJpaRepository;
 import org.example.repositories.ProductJpaRepository;
